@@ -1,0 +1,55 @@
+// OLD: perl
+
+/*
+my $gate = 'relay.obit.ru';
+my $name = 'MAILER';
+#my $charset = 'koi8-r';
+my $charset = 'UTF-8';
+my $headers;
+# #############new###################
+my $authname = 'voip.robot@obit.ru';
+my $authpassword = 'qq2qq3qq4';
+# #############old###################
+my $ctype;
+my $from;			// mail from:
+my $to;				// rcpt to: (may be comma-separated list)
+my $h_from;		// From: header
+my $h_to;			// To: header
+my $subj;			// Subject:
+my $msg;			// Message body, well be readed from STDIN, if empty
+my $att;			// Optional attachment (path to file) (may be comma-separated list)
+my $help = 0;	// Print help and exit */
+
+/*
+my $res = GetOptions (
+	"gate=s"		=> \$gate,
+	"name=s"		=> \$name,
+	"charset=s" => \$charset,
+	"headers=s" => \$headers,
+	"ctype=s"		=> \$ctype,
+	"from=s"		=> \$from,
+	"to=s"			=> \$to,
+  "subject=s"	=> \$subj,
+  "body=s"		=> \$msg,
+  "attach=s"	=> \$att,
+	"help"			=> \$help
+);
+*/
+
+/*
+if ($help) {
+	print "Send email to the list of recipients, with proper encodings, may attach some file(s)\n";
+	print "Arguments are:\n";
+	print "-ho[st] - smtp gate\n";
+	print "-n[ame] - helo string\n";
+	print "-f[rom] - mail from: address string\n";
+	print "-t[o] - rcpt to: address string (may be comma-separated list)\n";
+	print "-s[ubject] - Subject: string\n";
+	print "-b[ody] - Body string, will be readed from STDIN otherwise\n";
+	print "-a[ttach] - Optional attachment (path to file) (may be comma-separated list)\n";
+	print "-c[harset] - Optional charset encoding (koi8-r by default)\n";
+	print "-h[elp] - Print this message and exit\n";
+	exit;
+}
+*/
+
