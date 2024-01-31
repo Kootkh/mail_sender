@@ -13,19 +13,19 @@ const (
 
 // Что бы мы могли задавать параметры в качестве флагов для нашего бинарника
 type params struct {
-	host                    string `validate:"hostname"`
-	name                    string
-	from                    string        `validate:"email"`
-	fakeFrom                string        `validate:"email"`
-	recipients              []*recipient  `validate:"required,dive,required"`
-	subject                 string        `validate:"required"`
-	body                    string        `validate:"required"`
-	attachments             []*attachment `validate:"omitempty,dive,required"`
-	charset                 string
-	contentType             string
-	encoding                string
-	contentTransferEncoding string
-	help                    bool `validate:"boolean"`
+	host                    string       `validate:"hostname"`
+	name                    string       `validate:"omitempty,alphanumunicode"`
+	from                    string       `validate:"omitempty,email"`
+	fakeFrom                string       `validate:"omitempty,email"`
+	recipients              []recipient  `validate:"omitempty,dive,required"`
+	subject                 string       `validate:"required"`
+	body                    string       `validate:"required"`
+	attachments             []attachment `validate:"omitempty,dive,required"`
+	charset                 string       `validate:"omitempty,oneof=UTF-8	Win-1251 CP-866	KOI-8R	ISO-8859-5"`
+	contentType             string       `validate:"omitempty,oneof=EMAIL PHONE POST SMS"`
+	encoding                string       `validate:"omitempty,oneof=EMAIL PHONE POST SMS"`
+	contentTransferEncoding string       `validate:"omitempty,oneof=EMAIL PHONE POST SMS"`
+	help                    *bool        `validate:"boolean"`
 }
 
 type recipient struct {
@@ -45,10 +45,10 @@ func init() {
 	flag.String("name", "MAILER", "'helo' string")
 	flag.String("from", "noreply@obit.ru", "Email address to send FROM")
 	flag.String("fake-from", "", "[OPTIONAL] FAKE Email address to send FROM")
-	flag.StringVar(&to, "to", "Email address to send TO")
+	flag.StringVar(&recipient, "to", "", "Email address to send TO")
 	flag.String("subject", "", "Email SUBJECT")
 	flag.String("body", "", "Email BODY")
-	flag.StringVar(&attach, "attach", "[OPTIONAL] Attachment (path to file)")
+	flag.StringVar(&attachment, "attach", "", "[OPTIONAL] Attachment (path to file)")
 	flag.String("charset", "koi8-r", "[OPTIONAL] Email charset encoding")
 	flag.String("contentType", "text/plain", "[OPTIONAL] Email 'content-type'")
 	flag.String("encoding", "quoted-printable", "[OPTIONAL] Email encoding")
